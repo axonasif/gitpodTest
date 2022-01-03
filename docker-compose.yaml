@@ -4,3 +4,5 @@ services:
 
   php:
     build: ./docker/php
+  volumes:
+      - ./src:/var/www/html/
