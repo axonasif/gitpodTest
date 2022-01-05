@@ -3,9 +3,6 @@ tasks:
       docker-compose pull
   - command: |
       docker-compose up
-
-# image:
-#   file: .gitpod.Dockerfile
-
 ports:
-  - port: 8080
+  - port: 8000
+    onOpen: open-browser
