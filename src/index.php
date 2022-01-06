@@ -8,4 +8,4 @@ print_r($_SERVER);
 
 print_r($_ENV);
 
-echo "--". getenv(TEST_VARIABLE);
+echo "--". getenv("TEST_VARIABLE");
