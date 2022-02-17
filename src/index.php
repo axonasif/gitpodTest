@@ -1,11 +1,19 @@
 <?php
+$servername = "127.0.0.1";
+// $servername = "localhost";
+$username = "my_user";
+$password = "password";
+// $port = "3306";
 
-echo "Hello World";
-
-echo "<pre>";
-
-print_r($_SERVER);
-
-print_r($_ENV);
-
-echo "--". getenv(TEST_VARIABLE);
+try {
+  // $conn = new PDO("mysql:host=$servername;dbname=webrage_webrage;port=$port", $username, $password);
+  $conn = new PDO("mysql:host=$servername;dbname=webrage_webrage", $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Connected successfully";
+} catch(PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
+  echo "<pre>";
+  print_r($e);
+}
+?>

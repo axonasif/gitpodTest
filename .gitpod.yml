@@ -3,6 +3,10 @@ tasks:
       docker-compose pull
   - command: |
       docker-compose up
-ports:
-  - port: 8000
-    onOpen: open-browser
+      curl -sS https://getcomposer.org/installer | php
+
+vscode:
+  extensions:
+    - bmewburn.vscode-intelephense-client
+    - ms-azuretools.vscode-docker
+    - sonarsource.sonarlint-vscode

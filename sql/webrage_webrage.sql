@@ -316,6 +316,39 @@ CREATE TABLE `designIdMappingManual` (
 CREATE VIEW `designIdMapping`  AS SELECT "Base" as sourceTable, bricklinkid, brickowlId FROM `designIdMappingBase` UNION ALL SELECT "Manual", bricklinkid, brickowlId FROM `designIdMappingManual`;
 
 --
+-- Structure for view `orders`
+--
+CREATE TABLE `orders` ( 
+  `id` INT(10) NOT NULL, 
+  `source` VARCHAR(25) NOT NULL , 
+  `orderid` INT(15) NOT NULL , 
+  `dateOrdered` DATETIME NOT NULL , 
+  `sellerName` VARCHAR(100) NOT NULL , 
+  `storeName` VARCHAR(100) NOT NULL , 
+  `buyerName` VARCHAR(100) NOT NULL , 
+  `status` VARCHAR(50) NOT NULL , 
+  `totalCount` INT(10) NOT NULL , 
+  `uniqueCount` INT(10) NOT NULL , 
+  `isFiled` BOOLEAN NOT NULL , 
+  `currencycode` VARCHAR(10) NOT NULL , 
+  `subTotal` FLOAT(15,4) NOT NULL , 
+  `grandtotal` FLOAT(15,4) NOT NULL , 
+  `finalTotal` FLOAT(15,4) NOT NULL
+) ENGINE = MyISAM DEFAULT CHARSET=latin1;
+
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `source` (`source`,`orderid`);
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- Indexes for table `auditLog`
 --
 ALTER TABLE `auditLog`
@@ -338,7 +371,7 @@ ALTER TABLE `brickowlInventory`
 -- Indexes for table `bricklinkInventory`
 --
 ALTER TABLE `bricklinkInventory`
-  ADD PRIMARY KEY (`inventoryId`),
+  ADD PRIMARY KEY (`inventoryId`);
 
 --
 -- Indexes for table `colorMapping`
@@ -350,7 +383,7 @@ ALTER TABLE `colorMapping`
 --
 -- Indexes for table `designIdMapping`
 --
-ALTER TABLE `designIdMapping`
+ALTER TABLE `designIdMappingBase`
   ADD PRIMARY KEY (`bricklinkId`),
   ADD KEY `bricklinkId` (`bricklinkId`,`brickowlId`);
 
@@ -360,10 +393,6 @@ ALTER TABLE `designIdMapping`
 ALTER TABLE `designIdMappingManual`
   ADD PRIMARY KEY (`bricklinkId`),
   ADD KEY `bricklinkId` (`bricklinkId`,`brickowlId`);
-
---
--- AUTO_INCREMENT for dumped tables
---
 
 --
 -- AUTO_INCREMENT for table `auditLog`

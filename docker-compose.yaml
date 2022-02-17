@@ -10,6 +10,7 @@ services:
       - ./src:/var/www/html/
     depends_on:
       - db
+    restart: unless-stopped
 
   db:
     build: ./docker/mysql
@@ -22,6 +23,7 @@ services:
       - "3306:3306"
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
+    restart: unless-stopped
 
   phpmyadmin:
     build: ./docker/phpmyadmin
