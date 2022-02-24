@@ -1,3 +1,5 @@
+image: axonasif/workspace-tool-vnc:latest
+
 tasks:
   - init: |
       docker-compose pull
