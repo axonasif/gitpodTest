@@ -1,4 +1,4 @@
-image: axonasif/workspace-tool-vnc:latest
+image: axonasif/workspace-vnc:latest
 
 tasks:
   - init: |
